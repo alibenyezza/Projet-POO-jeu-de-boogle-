@@ -1,0 +1,80 @@
+# Le Vrai nom du jeu est : 
+Le Jeu de Boggle
+
+# Participant :
+- Ali Ben Yezza
+- Hugo Antaki
+- Théotime Archas
+
+# étapes a suivre :
+- définir les classe
+- diagrame UML
+
+# Rules : 
+- utiliser des variables nominatif (éviter  l, i , j  k )
+- Commenter les fonction que vous faites
+
+# first thoughts:
+![WhatsApp Image 2024-11-06 at 10 48 23_9871175d](https://github.com/user-attachments/assets/7606633e-e62e-4749-abf6-95212c431855)
+
+
+# potentiel classes:
+- générateur de matrice(4x4)
+- vérificateur de matrice(4x4)
+- plateau
+- nuage de mot
+- Dictionnaire (combien de Langue et comment l'intégrer?)
+- Joueur
+- Déssinateur Interface Graphique
+
+# Potentiel game 
+![image](https://github.com/user-attachments/assets/fc6f7231-5d15-4886-be9c-717542760542)
+
+# Cahier des charges
+<details>
+<summary>Recommandations </summary>
+  
+  - Ne pas oublier votre projet Test Unitaire sur au moins le test de 5 fonctions.
+  - Ne pas oublier les commentaires ///
+  - Ne pas oublier d’écrire les variables et fonctions avec des noms lisibles
+  - Ne pas oublier l’indentation.
+</details>
+
+<details>
+<summary>Critères Généraux</summary>
+
+- 
+</details>
+
+# Idées
+<details>
+<summary>Génération plateau et dés</summary>
+
+- On a 16 dés de 6 faces chacun, donc au total 96 faces sur lesquelles il faut "graver" une lettre. On utiliser .random() pour placer les lettres sur ces 96 faces tout en vérifiant que la génération des lettres respecte les critères de d'appartion des lettres (ex : max 8 lettres "a", max 4 lettres "w" sur l'ensemble des faces). Lors de la génération d'une n-ième case, si la lettre générée ne respecte pas les critères d'apparition (elle est déjà trop apparue), on regénère une lettre en excluant la lettre précédée (on réutiliser random avec les lettres de l'alphabet en retirant la lettre qui est déjà trop apparue, on peut retirer cette lettre dans toutes les générations suivantes car elle est de toute façon déjà trop apparue). Après avoir généré les 96 faces, on peut les repartir de manière aléatoire en groupe de 6 (cela consituera un dé). Cette dernière étape n'est pas nécessaire, mais elle permet d'éviter ques les dernières faces regroupent des lettres "rares", et que ces lettres "rares" se retrouvent sur le même dé.
+
+- On peut générer les 96 faces des 16 dés en s'appuyant sur les probabilités d'apparition des lettres (fréquence d'apparition des lettres dans la langue choisie). Pour chaque faces, la lettre est générée en fonction de ces probabilités. Les critères d'appartion des lettres sont toujours vérifiés à chaque apparition (ex : max 8 lettres "a", max 4 lettres "w" sur l'ensemble des faces), si la lettre générée ne respecte pas ces critères, on refait une génération jusqu'à ce qu'elle les respecte.
+
+- Les deux systèmes ci-dessus se ressemblent, à l'exception que l'un se contente de retirer les lettres déjà trop apparues, tandis que l'autre utilise des probabilités pour générer les lettres. On peut remarquer que cette deuxième solution nécessite d'implémenter un dictionnaire de statistiques d'apparition des lettres, à noter que ce dictionnaire change en fonction de la langue utilisée pour le jeu.
+</details>
+
+<details>
+<summary>Dictionnaire des mots</summary>
+
+- Dictionnaire score et poid, ou un seul dictionnaire avec les deux valeurs.
+
+- On découpe le dictionnaire de mots en fonction de leurs taille (ex : on découpe le dictionnaire général en un dictionnaire de mots de taille 2 caractères, en un dictionnaire de mots de taille 3 caractères, etc). Ainsi lorsque le joueur entrera un mot de taille n, ce mot sera rechercher dans le dictionnaire regroupant les mots de taille n. Une fois entré dans ce tableau, la recherche du mot s'effectura de manière alphabétique. Ce système permet de ne pas rechercher le mot dans un dictionnaire beaucoup plus grand avec un processus beaucoup plus énergivore.
+</details>
+
+<details>
+<summary>flow du Jeu</summary>
+
+-quand le chrono est en cours comment arreter tout une fonction meme si le joueur fait quelquechose?
+
+</details>
+
+# Questions
+- Incompréhension de la génération du score dans l'exemple du professeur
+- Est-ce que l'on doit conjuger les mots dans la liste des mots, ou est-ce qu'on les ajoute directement au dictionnaire de mots ?
+- Quel doit être le niveau de l'IA joueur ?
+- A propos du troisième bonus, est-ce que c'est pour l'IA ?
+
