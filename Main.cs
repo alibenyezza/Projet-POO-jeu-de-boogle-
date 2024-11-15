@@ -1,4 +1,14 @@
-Console.Write ("hello everyone");
+using System.Reflection.Metadata.Ecma335;
 
-hello
-hello à toi aussi
+namespace TD11_12
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Console.Write("hello everyone");
+            Console.WriteLine("Jeu Boogle");
+        }
+    }
+}
+        
